@@ -10,7 +10,7 @@ function App() {
   const [editNoteId, setEditNoteId] = useState(null);
 
   function fetchNotesData() {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
+    axios.get("https://notes-backend-frontend.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes);
     });
   }
@@ -26,7 +26,7 @@ function App() {
 
     if (editNoteId) {
       axios
-        .patch("http://localhost:3000/api/notes/" + editNoteId, {
+        .patch("https://notes-backend-frontend.onrender.com/api/notes/" + editNoteId, {
           description: noteDesc,
         })
         .then((res) => {
@@ -36,7 +36,7 @@ function App() {
         });
     } else {
       axios
-        .post("http://localhost:3000/api/notes", {
+        .post("https://notes-backend-frontend.onrender.com/api/notes", {
           title: noteTitle,
           description: noteDesc,
         })
@@ -50,7 +50,7 @@ function App() {
   }
 
   function handleDeleteNote(noteId) {
-    axios.delete("http://localhost:3000/api/notes/" + noteId).then((res) => {
+    axios.delete("https://notes-backend-frontend.onrender.com/api/notes/" + noteId).then((res) => {
       console.log(res.data);
       fetchNotesData();
     });
